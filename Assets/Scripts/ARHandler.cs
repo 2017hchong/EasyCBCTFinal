@@ -4,17 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using Vuforia;
 
+/// ARHandler is in charge of changing between the AR mode and the non-AR mode. 
 public class ARHandler : MonoBehaviour
 {
+    /// GameObject containing all the related AR GameObjects
 	public GameObject arAssets;
-
-	public GameObject groundPlaneStage;
-	public GameObject xRayHeadEmpty;
-	public GameObject xRayHead;
-
-	public CameraDrag camScript;
-
-    public Button yourButton;
+    /// ground plane stage object necessary for AR
+	public GameObject groundPlaneStage; 
+    /// empty GameObject holding the xray as child.
+	public GameObject xRayHeadEmpty; 
+    /// 3D model head showing x-ray result
+	public GameObject xRayHead; 
+    /// Script to rotate the camera around the head
+	public CameraDrag camScript; 
+    /// Button to enter or leave AR mode
+    public Button yourButton; 
 
     GameObject ARCam;
 
@@ -27,7 +31,7 @@ public class ARHandler : MonoBehaviour
     GameObject GroundPlaneStage;
 
     bool isARMode = false;
-    // Start is called before the first frame update
+
     void Start()
     {
     	arAssets.transform.GetChild(0).position = new Vector3(0,0,-0.7f);
@@ -53,6 +57,9 @@ public class ARHandler : MonoBehaviour
     	}
     }
 
+    ///
+    /// Make the necessary changes to enter AR mode. 
+    ///
     public void ARMode() 
     {
     	isARMode = true;
@@ -69,6 +76,9 @@ public class ARHandler : MonoBehaviour
         PlaneFinder.SetActive(true);
     }
 
+    ///
+    /// Make the necessary changes to exit AR mode. 
+    ///
     public void NonARMode()
     {
     	Transform arCamTrans = ARCam.transform;

@@ -2,32 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// ClippingCyllinder is the class in charge of sending values of the cylinder to the shader. At each update it sends the position, height, and radius to the shader in the correct format.
 public class ClippingCyllinder : MonoBehaviour
 {
-    //material we pass the values to
+    /// Mat is the material that holds the shader to which we pass the values to.
     public Material[] mat;
 
+    /// The height of the cylinder.
     public static float height;
+    /// The radius of the cylinder.
     public static float radius;
-
+    /// The position of the cylinder.
     public static Vector3 position;
 
+    /// The x-ray head GameObject.
     public GameObject xRayHead;
-    //position = center
-    //transform.up = cyllinder height
-
     Plane planeUp;
     Plane planeDown;
     void Start()
     {
         transform.up = Vector3.up;
-        //transform.position = new Vector3(0, 0, 0);
-
-        //height = 0.15f;
-        //radius = 0.03f;
-
-        //height = 0.05f;
-        //radius = 0.02f;
 
     }
 
@@ -63,9 +58,5 @@ public class ClippingCyllinder : MonoBehaviour
 
             m.SetVector("_Position", xRayHead.transform.position);
         }
-
-        ////create cylinder
-        //GameObject cylinder = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
-        //cylinder.transform.position = new Vector3(-2, 1, 0);
     }
 }

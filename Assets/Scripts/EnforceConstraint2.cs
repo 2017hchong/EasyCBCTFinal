@@ -3,20 +3,23 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Text;
 
+/// EnforceConstraint is a class that makes sure to keep two GameObjects have the same y position and the same scale.
 public class EnforceConstraint2 : MonoBehaviour
 {
+    /// One GameObject to enforce the constraints.
     public GameObject sr1;
+    /// Second GameObject to enforce the constraints.
     public GameObject sr2;
     Vector3 savedScale;
     float savedHeight;
 
-    public void Start()
+    void Start()
     {
         savedScale = sr1.transform.localScale;
         savedHeight = sr2.transform.position.y;
     }
 
-    public void Update()
+    void Update()
     {
         if (savedScale != sr1.transform.localScale)
         {

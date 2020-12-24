@@ -2,26 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// CameraDrag handles the rotation of the camera in front of the x-ray head. It listens for user inputs and rotates the camera around the x-ray head based on user direction.
 public class CameraDrag : MonoBehaviour
 {
+    /// The speed of how fast to rotate the camera.
     public float speed = 100;
      private float X;
      private float Y;
     private float startingPosition;
 
+    /// The target of the camera to rotate around.
     public GameObject target;
+    /// The camera that is rotating.
     public GameObject camera;
 
     void Update()
     {
     	if(!SceneHandler.isXRay)
     		return;
-        // if(Input.GetMouseButton(0)) {
-        //      transform.Rotate(new Vector3(Input.GetAxis("Mouse Y") * speed, -Input.GetAxis("Mouse X") * speed, 0), Space.World);
-        //      // X = transform.rotation.eulerAngles.x;
-        //      // Y = transform.rotation.eulerAngles.y;
-        //      // transform.rotation = Quaternion.Euler(X, Y, 0);
-        //  }
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
@@ -50,6 +49,7 @@ public class CameraDrag : MonoBehaviour
         }
     }
 
+    /// Method to set the location of the camera relative to the target. The Vector3 dist takes in a vector from the target to place the camera.
     public void SetCamera(Vector3 dist)
     {
         camera.transform.position = target.transform.position + dist;
